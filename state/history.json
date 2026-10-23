@@ -1,0 +1,19 @@
+[
+ {
+  "at": "2026-10-23T13:01:13.240Z",
+  "status": "held",
+  "rebuilt": 8,
+  "downloadFailed": [],
+  "red": [
+   "coastalZone: simplification moved the area by 0.7% (limit 0.5%)",
+   "coastalZone: held with no previous copy to carry; nothing is published",
+   "coastalZone: golden probe Venice is in the Coastal Zone failed (got [])",
+   "coastalZone: golden probe Topanga is in the Coastal Zone failed (got [])"
+  ],
+  "warn": [],
+  "goldenFailed": [
+   "Venice is in the Coastal Zone",
+   "Topanga is in the Coastal Zone"
+  ]
+ }
+]
