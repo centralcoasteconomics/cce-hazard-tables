@@ -3,3 +3,5 @@ out/
 prev/
 .work/
 result.json
+node_modules/
+.work/
