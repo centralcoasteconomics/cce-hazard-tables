@@ -1,0 +1,82 @@
+name: nightly-hazard-tiles
+on:
+  schedule:
+    - cron: "23 9 * * *"   # 09:23 UTC (about 2:23 AM Pacific), before the app's 10:17 UTC source check
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Rebuild every layer even if no agency edit date moved"
+        type: boolean
+        default: false
+permissions:
+  contents: write
+concurrency:
+  group: hazard-tiles
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+    env:
+      NODE_OPTIONS: --max-old-space-size=8192
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 22 }
+
+      # Unit tests and the recorded end-to-end build of one Venice tile (no network).
+      - name: Test
+        run: npm test
+
+      # The published set, so unchanged layers are carried rather than downloaded again, and so the
+      # publish below pushes only the files that changed. The first night there is none.
+      - name: Check out the published tiles
+        run: |
+          if git ls-remote --exit-code --heads origin data >/dev/null 2>&1; then
+            git clone --quiet --depth 1 --branch data "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" prev
+          else
+            mkdir prev && git -C prev init -q -b data
+          fi
+
+      # build.mjs: one metadata call per layer; a layer whose agency edit date moved (or a forced
+      # or monthly rebuild) is downloaded, simplified, tiled and checked. Exit 1 when anything is
+      # red; status = publish | checked | held.
+      - id: build
+        run: node build.mjs --prev prev --out out ${{ inputs.force && '--force' || '' }}
+        continue-on-error: true
+
+      # publish (a layer rebuilt) or checked (only the check date moved): the data branch is
+      # replaced as one commit, so the repo never grows by a statewide copy each night. Held
+      # layers ride along as their previous copies (named in manifest.held). held: nothing is
+      # pushed and the last good tiles stay live.
+      - name: Publish to the data branch
+        id: publish
+        if: steps.build.outputs.status == 'publish' || steps.build.outputs.status == 'checked'
+        run: |
+          rsync -a --delete --exclude .git out/ prev/
+          cd prev
+          git config user.name "cce-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if git rev-parse -q --verify HEAD >/dev/null; then
+            git commit -q --amend -m "hazard tiles: ${{ steps.build.outputs.status }} $(date -u +%F)"
+          else
+            git commit -q -m "hazard tiles: first build $(date -u +%F)"
+          fi
+          git push -q -f "https://x-access-token:${{ github.token }}@github.com/${GITHUB_REPOSITORY}.git" data
+          echo "published $(ls tiles | wc -l) tiles"
+
+      - name: Record the run in state/
+        if: always() && hashFiles('result.json') != ''
+        run: |
+          if [ "${{ steps.publish.outcome }}" = "success" ]; then node record.mjs --published; else node record.mjs; fi
+          git config user.name "cce-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add state/
+          git diff --cached --quiet || (git commit -m "state $(date -u +%F)" && git push)
+
+      - name: Fail the run if anything was held
+        if: steps.build.outcome == 'failure' || steps.publish.outcome == 'failure'
+        run: |
+          echo "Red: see the build step. Held layers kept their previous tiles; a held run published nothing."
+          exit 1

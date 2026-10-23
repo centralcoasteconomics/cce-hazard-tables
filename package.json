@@ -1,0 +1,14 @@
+{
+  "name": "cce-hazard-tables",
+  "private": true,
+  "type": "module",
+  "description": "Nightly California hazard polygons (CGS seismic and fault zones, Coastal Zone, CAL FIRE fire hazard zones SRA and LRA, USFWS critical habitat, Caltrans airports) as 0.1 degree gzip JSON tiles, with a reader that answers in ArcGIS's own feature shape.",
+  "license": "UNLICENSED",
+  "engines": { "node": ">=20" },
+  "main": "reader.mjs",
+  "types": "reader.d.ts",
+  "scripts": {
+    "test": "node --test test/*.test.mjs",
+    "build": "node build.mjs"
+  }
+}

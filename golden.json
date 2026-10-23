@@ -1,0 +1,27 @@
+{
+ "about": "Points with known answers, each probed live on 2026-10-23 against the agency's own service. Any flip holds that layer. Edit only in a reviewed commit, never to turn a red run green.",
+ "probes": [
+  { "label": "Venice (Los Angeles) is in a liquefaction zone, quad Venice", "layer": "liquefaction", "lat": 33.985, "lng": -118.4695, "expect": true, "field": "QUAD_NAME", "match": "^Venice$" },
+  { "label": "Simi Valley canary site is in a liquefaction zone, quad Simi Valley East", "layer": "liquefaction", "lat": 34.2717, "lng": -118.6936, "expect": true, "field": "QUAD_NAME", "match": "Simi Valley East" },
+  { "label": "Downtown Oakland is in no liquefaction zone", "layer": "liquefaction", "lat": 37.8044, "lng": -122.2712, "expect": false },
+  { "label": "Topanga is in a landslide zone, quad Topanga", "layer": "landslide", "lat": 34.09, "lng": -118.6, "expect": true, "field": "QUAD_NAME", "match": "^Topanga$" },
+  { "label": "Venice is in no landslide zone", "layer": "landslide", "lat": 33.985, "lng": -118.4695, "expect": false },
+  { "label": "Fresno is in an unevaluated quad (Fresno South)", "layer": "unevaluated", "lat": 36.7378, "lng": -119.7871, "expect": true, "field": "QUAD_NAME", "match": "Fresno South" },
+  { "label": "Venice is in an evaluated quad", "layer": "unevaluated", "lat": 33.985, "lng": -118.4695, "expect": false },
+  { "label": "Downtown Oakland is in an evaluated quad", "layer": "unevaluated", "lat": 37.8044, "lng": -122.2712, "expect": false },
+  { "label": "Berkeley Memorial Stadium sits in the Hayward fault zone (Oakland East)", "layer": "faultZones", "lat": 37.8712, "lng": -122.2508, "expect": true, "field": "QUAD_NAME", "match": "Oakland East" },
+  { "label": "Downtown Oakland is in no fault zone", "layer": "faultZones", "lat": 37.8044, "lng": -122.2712, "expect": false },
+  { "label": "Venice is in the Coastal Zone", "layer": "coastalZone", "lat": 33.985, "lng": -118.4695, "expect": true },
+  { "label": "Topanga is in the Coastal Zone", "layer": "coastalZone", "lat": 34.09, "lng": -118.6, "expect": true },
+  { "label": "Fresno is outside the Coastal Zone", "layer": "coastalZone", "lat": 36.7378, "lng": -119.7871, "expect": false },
+  { "label": "Downtown Oakland is outside the Coastal Zone (the Bay is BCDC's)", "layer": "coastalZone", "lat": 37.8044, "lng": -122.2712, "expect": false },
+  { "label": "Topanga is a Very High FHSZ in the State Responsibility Area", "layer": "fhszSra", "lat": 34.09, "lng": -118.6, "expect": true, "field": "FHSZ_Description", "match": "^Very High$" },
+  { "label": "Downtown Oakland is in no SRA fire zone", "layer": "fhszSra", "lat": 37.8044, "lng": -122.2712, "expect": false },
+  { "label": "Paradise is a Very High FHSZ in the Local Responsibility Area", "layer": "fhszLra", "lat": 39.7596, "lng": -121.6219, "expect": true, "field": "FHSZ_Description", "match": "^Very High$" },
+  { "label": "Fresno is LRA, NonWildland", "layer": "fhszLra", "lat": 36.7378, "lng": -119.7871, "expect": true, "field": "FHSZ_Description", "match": "^NonWildland$" },
+  { "label": "Venice is LRA, NonWildland", "layer": "fhszLra", "lat": 33.985, "lng": -118.4695, "expect": true, "field": "FHSZ_Description", "match": "^NonWildland$" },
+  { "label": "Coal Oil Point is within 400 m of western snowy plover critical habitat", "layer": "criticalHabitat", "lat": 34.4075, "lng": -119.878, "withinM": 400, "expect": true, "field": "comname", "match": "snowy plover" },
+  { "label": "San Francisco International lies inside its airport boundary", "layer": "airports", "lat": 37.6213, "lng": -122.379, "withinM": 50, "expect": true, "field": "FACILITY", "match": "SAN FRANCISCO INTERNATIONAL" },
+  { "label": "Los Angeles International lies inside its airport boundary", "layer": "airports", "lat": 33.9425, "lng": -118.4081, "withinM": 50, "expect": true, "field": "FACILITY", "match": "LOS ANGELES INTERNATIONAL" }
+ ]
+}
