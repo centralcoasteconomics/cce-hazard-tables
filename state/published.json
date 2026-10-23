@@ -1,0 +1,51 @@
+{
+ "at": "2026-10-23T13:10:02.539Z",
+ "scope": [
+  32.4,
+  -124.5,
+  42.1,
+  -114.1
+ ],
+ "layers": {
+  "liquefaction": {
+   "lastEditDate": 1763574392920,
+   "featureCount": 2031,
+   "areaKm2": 4612.795
+  },
+  "landslide": {
+   "lastEditDate": 1763581038289,
+   "featureCount": 41769,
+   "areaKm2": 3875.442
+  },
+  "unevaluated": {
+   "lastEditDate": 1763574971715,
+   "featureCount": 2748,
+   "areaKm2": 416141.8
+  },
+  "faultZones": {
+   "lastEditDate": 1763573873826,
+   "featureCount": 1463,
+   "areaKm2": 3823.8
+  },
+  "fhszSra": {
+   "lastEditDate": 1751056245660,
+   "featureCount": 18423,
+   "areaKm2": 125424.313
+  },
+  "fhszLra": {
+   "lastEditDate": 1757523815712,
+   "featureCount": 9752,
+   "areaKm2": 87041.215
+  },
+  "criticalHabitat": {
+   "lastEditDate": 1788192500434,
+   "featureCount": 140,
+   "areaKm2": 128938.513
+  },
+  "airports": {
+   "lastEditDate": null,
+   "featureCount": 221,
+   "areaKm2": 369.958
+  }
+ }
+}
