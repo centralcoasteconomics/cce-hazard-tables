@@ -48,6 +48,7 @@ export const LAYERS = {
   fhszSra: { source: 'CAL FIRE Fire Hazard Severity Zones, State Responsibility Area (2023)', license: 'California public record' },
   fhszLra: { source: 'CAL FIRE Fire Hazard Severity Zones, Local Responsibility Area (map of March 24, 2025)', license: 'California public record' },
   criticalHabitat: { source: 'U.S. Fish and Wildlife Service, Critical Habitat (final designations)', license: 'U.S. Government work, public domain' },
+  floodZones: { source: 'FEMA National Flood Hazard Layer, flood hazard zones', license: 'U.S. Government work, public domain' },
   airports: { source: 'Caltrans Division of Aeronautics, Airport Boundaries', license: 'California public record', whole: true }
 }
 

@@ -23,7 +23,10 @@ Licenses and the citation the app must print: `ATTRIBUTION.md`. All are public r
 Government works; each keeps its "official map governs" disclaimer.
 
 Not included (yet): Caltrans HQTA and USDA rural areas (plan 3.3 lists them; add to
-`lib/layers.mjs` with golden probes), freeway lines (phase 2).
+`lib/layers.mjs` with golden probes), freeway lines (phase 2). Deferred (`DEFERRED_LAYERS`,
+built only with `--layers`): `coastalZone` (held by an area-measure artifact, fixed 2026-10-23,
+re-enable after one green statewide run) and `floodZones` (FEMA NFHL flood zones, phase 3; plan
+and one-county proof in `NFHL_PLAN.md`, `scripts/nfhl-proof.mjs`).
 
 ## Files on the data branch
 
