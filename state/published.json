@@ -1,5 +1,5 @@
 {
- "at": "2026-10-25T13:46:41.597Z",
+ "at": "2026-10-25T21:13:37.351Z",
  "scope": [
   32.4,
   -124.5,
@@ -46,6 +46,11 @@
    "lastEditDate": null,
    "featureCount": 221,
    "areaKm2": 369.958
+  },
+  "coastalZone": {
+   "lastEditDate": 1724711761736,
+   "featureCount": 3,
+   "areaKm2": 6223.101
   }
  }
 }
