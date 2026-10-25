@@ -54,8 +54,8 @@ test('first build of the Venice tile publishes, and the golden probes in scope p
   const reader = diskReader(join(dir, 'out'))
   const liq = await reader.intersects('liquefaction', 33.985, -118.4695)
   assert.deepEqual(liq.features.map((f) => f.attributes.QUAD_NAME), ['Venice'])
-  // coastalZone is deferred (lib/layers.mjs DEFERRED_LAYERS): the reader refuses it, so the app reads it live.
-  await assert.rejects(() => reader.intersects('coastalZone', 33.985, -118.4695), /not in the hazard tables/)
+  // coastalZone, re-enabled 2026-10-25 (28c): Venice is inside it, from the tile.
+  assert.equal((await reader.intersects('coastalZone', 33.985, -118.4695)).features.length, 1)
   assert.equal((await reader.intersects('unevaluated', 33.985, -118.4695)).features.length, 0, 'evaluated quad: an empty answer from a built tile')
   assert.equal((await reader.intersects('faultZones', 33.985, -118.4695)).features.length, 0)
   const lra = await reader.intersects('fhszLra', 33.985, -118.4695)
