@@ -1,5 +1,5 @@
 {
- "at": "2026-10-29T16:17:07.036Z",
+ "at": "2026-10-30T16:01:40.504Z",
  "scope": [
   32.4,
   -124.5,
@@ -38,9 +38,9 @@
    "areaKm2": 87041.215
   },
   "criticalHabitat": {
-   "lastEditDate": 1788192500434,
+   "lastEditDate": 1792591019690,
    "featureCount": 140,
-   "areaKm2": 128938.513
+   "areaKm2": 128488.958
   },
   "airports": {
    "lastEditDate": null,
