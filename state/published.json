@@ -1,5 +1,5 @@
 {
- "at": "2026-11-17T18:40:16.437Z",
+ "at": "2026-11-18T18:14:18.737Z",
  "scope": [
   32.4,
   -124.5,
@@ -8,24 +8,24 @@
  ],
  "layers": {
   "liquefaction": {
-   "lastEditDate": 1763574392920,
-   "featureCount": 2031,
-   "areaKm2": 4612.795
+   "lastEditDate": 1794952297976,
+   "featureCount": 2059,
+   "areaKm2": 4849.007
   },
   "landslide": {
-   "lastEditDate": 1763581038289,
-   "featureCount": 41769,
-   "areaKm2": 3875.442
+   "lastEditDate": 1794953870095,
+   "featureCount": 42527,
+   "areaKm2": 3951.107
   },
   "unevaluated": {
-   "lastEditDate": 1763574971715,
-   "featureCount": 2748,
-   "areaKm2": 416141.8
+   "lastEditDate": 1794953306381,
+   "featureCount": 2744,
+   "areaKm2": 415602.281
   },
   "faultZones": {
-   "lastEditDate": 1763573873826,
-   "featureCount": 1463,
-   "areaKm2": 3823.8
+   "lastEditDate": 1794951903295,
+   "featureCount": 1451,
+   "areaKm2": 3829.092
   },
   "fhszSra": {
    "lastEditDate": 1751056245660,
